@@ -1,0 +1,88 @@
+apiVersion: external-secrets.io/v1alpha1
+kind: ExternalSecret
+metadata:
+  labels:
+    app.kubernetes.io/part-of: preprocessing-service
+  name: sso-configs
+  namespace: sso-integration
+spec:
+  data:
+  - remoteRef:
+      key: rhsso/integration
+      property: AWS_ACCESS_KEY_ID
+    secretKey: AWS_ACCESS_KEY_ID
+  - remoteRef:
+      key: rhsso/integration
+      property: AWS_SECRET_ACCESS_KEY
+    secretKey: AWS_SECRET_ACCESS_KEY
+  - remoteRef:
+      key: rhsso/integration
+      property: AWS_DEFAULT_REGION
+    secretKey: AWS_DEFAULT_REGION
+  - remoteRef:
+      key: rhsso/integration
+      property: ADMIN_CLIENT_ID
+    secretKey: ADMIN_CLIENT_ID
+  - remoteRef:
+      key: rhsso/integration
+      property: ADMIN_CLIENT_SECRET
+    secretKey: ADMIN_CLIENT_SECRET
+  - remoteRef:
+      key: rhsso/integration
+      property: ARGO_ADMIN_EMAIL
+    secretKey: ARGO_ADMIN_EMAIL
+  - remoteRef:
+      key: rhsso/integration
+      property: ARGO_ADMIN_FIRSTNAME
+    secretKey: ARGO_ADMIN_FIRSTNAME
+  - remoteRef:
+      key: rhsso/integration
+      property: ARGO_ADMIN_LASTNAME
+    secretKey: ARGO_ADMIN_LASTNAME
+  - remoteRef:
+      key: rhsso/integration
+      property: ARGO_ADMIN_PASSWORD
+    secretKey: ARGO_ADMIN_PASSWORD
+  - remoteRef:
+      key: rhsso/integration
+      property: ARGO_ADMIN_USERNAME
+    secretKey: ARGO_ADMIN_USERNAME
+  - remoteRef:
+      key: rhsso/integration
+      property: OPENSHIFT_BROKER_CLIENT_ID
+    secretKey: OPENSHIFT_BROKER_CLIENT_ID
+  - remoteRef:
+      key: rhsso/integration
+      property: OPENSHIFT_BROKER_CLIENT_SECRET
+    secretKey: OPENSHIFT_BROKER_CLIENT_SECRET
+  - remoteRef:
+      key: rhsso/integration
+      property: AZURE_X509_CERT
+    secretKey: AZURE_X509_CERT
+  - remoteRef:
+      key: rhsso/integration
+      property: ANSIBLE_KEY_CERT
+    secretKey: ANSIBLE_KEY_CERT
+  - remoteRef:
+      key: rhsso/integration
+      property: ANSIBLE_KEY_PRIVATE_KEY
+    secretKey: ANSIBLE_KEY_PRIVATE_KEY
+  - remoteRef:
+      key: rhsso/integration
+      property: ANSIBLE_X509_CERT
+    secretKey: ANSIBLE_X509_CERT
+  - remoteRef:
+      key: rhsso/integration
+      property: CA_CERT_BUNDLE
+    secretKey: CA_CERT_BUNDLE
+  - remoteRef:
+      key: rhsso/integration
+      property: KEYCLOAK_REALM
+    secretKey: KEYCLOAK_REALM
+  refreshInterval: 15s
+  secretStoreRef:
+    kind: SecretStore
+    name: secretstore-vault
+  target:
+    creationPolicy: Owner
+    name: sso-configs
